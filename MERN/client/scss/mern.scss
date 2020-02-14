@@ -1,0 +1,67 @@
+$page-title-color: #efefef;
+
+html {
+  box-sizing: border-box;
+  min-height: 95%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  #mount {
+    background-color: rgba(0, 0, 0, .5);
+    min-height: 100%;
+  }
+
+  a {
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.app-container {
+
+  .page-title {
+    color: $page-title-color;
+    cursor: default;
+    margin-top: 0;
+    padding-top: 20px;
+    text-align: center;
+  }
+}
+
+.route-not-found {
+  color: #aaa;
+  padding-top: 50px;
+  text-align: center;
+  .not-found-title {
+    margin-bottom: 75px;
+    font-size: 4.5em;
+  }
+  .not-found-text {
+    font-size: 3em;
+  }
+}
+
+.component-container {
+	display: flex;
+	flex-wrap: wrap;
+  counter-reset: buttons;
+	.component-wrapper {
+		color: #f3f3f3;
+		width: 33.33%;
+		min-width: 250px;
+    .component-title {      
+      &::before {
+        counter-increment: buttons;
+        content: counter(buttons) ". ";
+      }
+    }
+	}
+}

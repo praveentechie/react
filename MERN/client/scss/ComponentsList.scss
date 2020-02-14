@@ -1,0 +1,12 @@
+:local(.componentLists) {
+  .component-section {
+    padding: 5px;
+    .section-item {
+      border-right: 1px solid #888;
+      padding: 0 8px;
+    }
+  }
+  .component-container {
+    padding: 0 20px;
+  }
+}

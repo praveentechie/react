@@ -1,0 +1,118 @@
+.button-component {
+  counter-reset: buttons;
+  .button-display {
+    display: flex;
+    .button-section {
+      width: 25%;
+      .button-title {
+        &::before {
+          counter-increment: buttons;
+          content: counter(buttons) ". ";
+        }
+      }
+      .section-helper {
+        display: block;
+        font-style: italic;
+        font-size: .8em;
+      }
+    }
+  }
+  button{
+    &.ripple {
+      position: relative;
+      border: none;
+      text-align: center;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+
+      &:after {
+        content: "";
+        background: #99c2ff;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px!important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 1s
+      }
+
+      &:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+      }
+    }
+
+    &.clickable {
+      display: inline-block;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      box-shadow: 0 5px 5px #999;
+
+      &:active {
+        box-shadow: 0 4px 3px #666;
+        transform: translateY(4px);
+      }
+    }
+    &.hoverable {
+      display: inline-block;
+      text-align: center;
+      transition: all 0.5s;
+
+      span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+
+        &.after {
+          &:after {
+            content: '>>';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: 20px;
+            transition: 0.5s;
+          }
+        }
+        &.before {
+          &:before {
+            content: '<<';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: 20px;
+            transition: 0.5s;
+          }
+        }
+      }
+
+      &:hover span{
+        &.after{
+          padding-right: 25px !important;
+
+          &:after {
+            opacity: 1;
+            right: 0;
+          }
+        }
+        &.before{
+          padding-left: 25px !important;
+
+          &:before {
+            opacity: 1;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
