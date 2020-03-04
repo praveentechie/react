@@ -1,42 +1,43 @@
 var path = require('path');
 var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var jsDestPath = '../build';
-
+var jsDestPath = '../dist';
+console.log(path.join(__dirname, '..', 'dist'));
 var webpackOptions = {
+  mode: 'development',
   devtool: 'eval-source-map',
   cache : true,
   watch: false,
-  context: path.join(__dirname, 'client'),
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    '../../client/client.js'
+    './client/client.js'
   ],
   output: {
     filename: 'client.js',
     chunkFilename: '[id].[chunkhash].js',
-    path: __dirname,
-    publicPath: 'http://localhost:3008/'
+    path: path.join(__dirname, '..', 'dist')
   },
   module: {
-    loaders: [
-      { test: /.(?:jsx|js)$/,
-        loaders: ['react-hot', 'babel-loader'],
+    rules: [
+      {
+        test: /.(?:jsx|js)$/,
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
         test: /.jsx$/,
-        loader: 'babel-loader',
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.scss$/, loader: 'style!css!sass'},
-      { test: /\.png/, loader: 'url' },
-      { test: /\.jpg/, loader: 'url' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
+      { test: /\.png/, use: ['url-loader'] },
+      { test: /\.jpg/, use: ['url-loader'] },
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.json','.jsx','.css']
+    extensions: ['.js', '.json','.jsx','.css']
   },
   node: {
     fs: 'empty',
@@ -44,14 +45,16 @@ var webpackOptions = {
     tls: 'empty'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'React app',
+      filename: 'index.html', // default value
+      template: 'index.html',
+      inject: true,
+      excludeChunks: [ 'server' ]
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-      }
-    })
+    new webpack.NoEmitOnErrorsPlugin()
   ],
 };
 

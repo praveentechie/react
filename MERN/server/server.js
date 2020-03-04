@@ -12,6 +12,7 @@ import viewRoute      from './routes/viewRoute';
 import config         from '../appConfig';
 
 let app = express();
+console.log('config', config);
 let {
   serverInstance,
   serverPort = 3008,
@@ -19,14 +20,12 @@ let {
   dbPort,
   env
 } = config;
-console.log('config', config);
 
 app.use(helmet());
 app.use(cors());
 app.options('*', cors());
 // app.use(express.static(path.join(__dirname, './home.html')));
-app.use('/build', express.static(path.join(__dirname, '../build')));
-app.use('/public', express.static(path.join(__dirname, '../public')));
+app.use('/dist', express.static(path.join(__dirname, '/dist')));
 
 /* Enable hot reload for dev mode */
 if (env === 'development') {
@@ -70,6 +69,9 @@ app.use(clientSessions({
 
 app.use('/', viewRoute);
 app.use('/v*/users', userRoute);
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'dist' });
+});
 
 /* Replace depricated mongo promise and use from Node */
 mongoose.Promise = global.Promise;

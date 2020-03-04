@@ -1,5 +1,5 @@
 import React, { Component }   from 'react';
-import { Link }               from 'react-router';
+import { Link }               from 'react-router-dom';
 
 export default class ComponentsList extends Component {
   constructor(props) {
@@ -7,7 +7,7 @@ export default class ComponentsList extends Component {
   }
   render() {
     return (
-      <div className='components-list'>
+      <div className='component-list'>
         <div className='component-section'>
           <Link to='/components/loader' className='section-item'>
             Loader
@@ -20,9 +20,6 @@ export default class ComponentsList extends Component {
           </Link>
           <Link to='/components/input-field' className='section-item'>
             Input Field
-          </Link>
-          <Link to='/components/atv-image' className='section-item'>
-            Atv Image
           </Link>
         </div>
       </div>

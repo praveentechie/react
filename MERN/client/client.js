@@ -1,39 +1,36 @@
-import 'babel-polyfill';
 import React                    from 'react';
 window.React = React;
 import ReactDOM                 from 'react-dom';
 import {combineReducers}        from 'redux';
 import {Provider}               from 'react-redux';
 import {
-  Router,
+  HashRouter,
   Route,
-  IndexRedirect,
-  hashHistory
-}                               from 'react-router';
-import {
-  syncHistoryWithStore,
-  routerReducer
-}                               from 'react-router-redux';
+  Switch
+}                               from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router' 
 import ReducerRegistry          from './utils/ReducerRegistry';
 import storeFactory             from './utils/StoreFactory';
 import App                      from './components/App';
 import RouteNotFound            from './components/RouteNotFound';
+import { connectRouter } from 'connected-react-router';
 
+import history from "./utils/history";
+import HomeRoute from './routes/HomeRoute';
+import ComponentRoute from './routes/ComponentsRoute';
 // import 'jquery.growl/stylesheets/jquery.growl.css';
 // import './css/Utils.css';
-// import './sass/Utils.scss';
-let history = null;
+import './scss/_core.scss';
 const reducerRegistry = new ReducerRegistry({
-  routing: routerReducer
+  router: connectRouter(history)
 });
-
 Promise.all([storeFactory(combineReducers(reducerRegistry.getReducers()))])
   .then(resolves=>{
     let store = resolves[0];
-    reducerRegistry.setChangeListener((reducers) => {
+    window.store = store;
+    reducerRegistry.setChangeListener(() => {
       store.replaceReducer(combineReducers(reducerRegistry.getReducers()));
     });
-    history = syncHistoryWithStore(hashHistory, store);
     render(store);
   })
   .catch(error=>{
@@ -42,19 +39,20 @@ Promise.all([storeFactory(combineReducers(reducerRegistry.getReducers()))])
 
 const render = (store)=>{
   ReactDOM.render(
-    <div>
-      <Provider store={store}>
-        <div>
-          <Router history={history}>
-            <Route path='/' component={App}>
-              {require('./routes/HomeRoute')(reducerRegistry)}
-              {require('./routes/ComponentsRoute')(reducerRegistry)}
-            </Route>
-            <Route path='*' component={RouteNotFound}/>
-          </Router>
-        </div>
-      </Provider>
-    </div>,
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <HashRouter>
+          <div>
+            <Route path='/' component={App}/>
+            <Switch>
+              {HomeRoute(reducerRegistry)}
+              {ComponentRoute(reducerRegistry)}
+              <Route component={RouteNotFound}/>
+            </Switch>
+          </div>
+        </HashRouter>
+      </ConnectedRouter>
+    </Provider>,
     document.getElementById('mount')
   );
 };

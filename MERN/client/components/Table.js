@@ -7,6 +7,7 @@ import '../css/react-bootstrap-table.min.css';
 import '../scss/table.scss';
 
 export default class Table extends Component {
+  static displayName = 'Table';
   constructor(props) {
     super(props);
     document.title =  `${props.title} - Table`;

@@ -1,43 +1,65 @@
 var path = require('path');
 var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var jsDestPath = '../build';
+var jsDestPath = 'dist';
 
 var webpackOptions = {
+  mode: 'development',
   devtool: 'eval-source-map',
   cache : true,
   watch: false,
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
     './client/client.js'
   ],
   output: {
-    path: __dirname + '/'+jsDestPath,
+    path: path.join(__dirname, '../', jsDestPath),
     filename: 'client.js',
     chunkFilename: '[id].[chunkhash].js',
-    publicPath :  'http://localhost:3000/'
+    publicPath: path.join(__dirname, '../', jsDestPath)
   },
   module: {
-    loaders: [
-      { test: /.(?:jsx|js)$/,
-        loader: 'babel-loader',
+    rules: [
+      {
+        test: /.(?:jsx|js)$/,
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
         test: /.jsx$/,
-        loader: 'babel-loader',
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.scss$/, loader: 'style!css!sass'},
-      { test: /\.png/, loader: 'url' },
-      { test: /\.jpg/, loader: 'url' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
+      }, {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.json','.jsx','.css']
+    extensions: ['.js', '.json','.jsx','.scss','.css']
   },
   devServer: {
     contentBase: __dirname + '/client/',
@@ -51,19 +73,21 @@ var webpackOptions = {
     tls: 'empty'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'React app',
+      filename: 'index.html', // default value
+      template: 'index.html',
+      inject: true,
+      excludeChunks: [ 'server' ]
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-      }
-    })
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
     host: 'localhost',
     port: 3000,
-
+    contentBase: path.join(__dirname, '..', 'dist'),
     historyApiFallback: true,
     // respond to 404s with index.html
 

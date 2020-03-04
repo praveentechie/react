@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var jsDestPath = '../build';
+var jsDestPath = '../dist';
 
 var webpackOptions = {
   watch: false,
@@ -15,20 +15,21 @@ var webpackOptions = {
     publicPath :  'http://localhost:3000/'
   },
   module: {
-    loaders: [
-      { test: /.(?:jsx|js)$/,
-        loader: 'babel-loader',
+    rules: [
+      {
+        test: /.(?:jsx|js)$/,
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
         test: /.jsx$/,
-        loader: 'babel-loader',
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.scss$/, loader: 'style!css!sass'},
-      { test: /\.png/, loader: 'url' },
-      { test: /\.jpg/, loader: 'url' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
+      { test: /\.png/, use: ['url-loader'] },
+      { test: /\.jpg/, use: ['url-loader'] },
     ]
   },
   resolve: {
@@ -45,7 +46,6 @@ var webpackOptions = {
     tls: 'empty'
   },
   plugins: [
-    new webpack.optimize.DedupePlugin(),
     // new webpack.optimize.UglifyJsPlugin([{
     //   compress: {
     //     warning: false

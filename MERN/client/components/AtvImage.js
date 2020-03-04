@@ -1,3 +1,7 @@
+/**
+ * @deprecated
+ * react-atv-img library is not supported. so the component will not work
+ */
 import React, { Component }   from 'react';
 import AtvImg from 'react-atv-img';
 

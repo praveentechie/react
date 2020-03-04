@@ -1,6 +1,6 @@
 import React, { Component }   from 'react';
-import { Link }               from 'react-router';
-import styles                 from '../scss/AppNavigator.scss';
+import { Link }               from 'react-router-dom';
+import '../scss/AppNavigator.scss';
 
 export default class AppNavigator extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class AppNavigator extends Component {
   }
   render() {
     return (
-      <div className={styles.appNavigator}>
+      <div className='app-navigation-container'>
         <h4 className='app-navigation'>
           <Link to='/home'><i className='fa fa-home'/> Home</Link>
           <Link to='/components'><i className='fa fa-cubes'/> Components</Link>

@@ -1,18 +1,18 @@
+/**
+ * @deprecated
+ * A sample try to replicate InputSlide.js effect
+ */
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import cx from 'classnames';
 
-import s from '../scss/components/_InputSlide1.scss';
+import '../scss/components/_InputSlide1.scss';
 
-class Search extends Component {
-
-  static propTypes = {
-    onSubmit: React.PropTypes.func.isRequired
-  };
-
-  state = {
-    query: ''
-  };
+export default class InputSlide1 extends Component {
+  constructor() {
+    super();
+    this.state = {
+      query: ''
+    };  
+  }
 
   handleQueryChange = query => {
     this.setState({ query });
@@ -52,11 +52,9 @@ class Search extends Component {
   // }
 
   render() {
-    const clearInput = cx(s.clearInput, 'glyphicon glyphicon-close');
     const { query } = this.state;
     return (
       <form
-        className={s.searchForm}
         onSubmit={this.handleSubmit}
       >
         <span className={`slide-input input-slide ${query ? 'input-filled' : ''}`}>
@@ -72,12 +70,10 @@ class Search extends Component {
               Town
             </span>
           </label>
-          {query && <i className={clearInput} onClick={this.clearQuery} />}
+          {query && <i className='glyphicon glyphicon-close' onClick={this.clearQuery} />}
           <button primary icon="glyphicon-search" onClick={this.handleSubmit}/>
         </span>
       </form>
     );
   }
 }
-
-export default Search;

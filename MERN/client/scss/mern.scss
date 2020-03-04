@@ -9,8 +9,9 @@ html {
 }
 
 body {
-  background-image: url('../images/bg.jpg');
+  background-image: url('/images/bg.jpg');
   background-size: cover;
+  color: #fff !important;
   #mount {
     background-color: rgba(0, 0, 0, .5);
     min-height: 100%;

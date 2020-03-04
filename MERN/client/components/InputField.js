@@ -1,6 +1,5 @@
 import React, { Component }   from 'react';
 import InputSlide             from './InputSlide';
-import InputSlide1            from './InputSlide1';
 import '../scss/components/_InputField.scss';
 
 export default class InputField extends Component {
@@ -39,7 +38,6 @@ export default class InputField extends Component {
         <div className='component-wrapper'>
           <h3 className='component-title'>Field Style 2</h3>
           <InputSlide />
-          <InputSlide1 />
         </div>
       </div>
     );

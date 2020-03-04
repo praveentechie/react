@@ -6,12 +6,10 @@ import * as actionCreators    from '../actions/HomeActions';
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
+    console.log('home scree**********');
     this.actions = bindActionCreators(actionCreators, props.dispatch);
     this.editUserName = this.editUserName.bind(this);
   }
-  static contextTypes = {
-    router: React.PropTypes.object.isRequired
-  };
   editUserName(e) {
     this.actions.editUserName(e.target.value);
   }
@@ -24,7 +22,9 @@ class HomeScreen extends Component {
     );
   }
 }
-
+// HomeScreen.contextTypes = {
+//   router: React.PropTypes.object.isRequired
+// };
 export default connect(state => {
   return {
     homeReducer: state.homeReducer

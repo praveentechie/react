@@ -1,20 +1,23 @@
-import { Route, IndexRoute }  from 'react-router';
+import { Route, Switch }  from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import reducer from '../reducers/HomeReducer';
 
-
+const LoadingMessage = () => (
+  "I'm loading..."
+)
 export default (reducerRegistry) => {
-  const appRoute = {
-    renderHome: (location, cb) => {
-      require(['../screens/HomeScreen', '../reducers/HomeReducer'], (component, reducer)=> {
-        reducerRegistry.register({
-          homeReducer: reducer
-        });
-        cb(null, component);
-      });
-    }
-  };
-
-  return(
-    <Route path='/home' getComponent={appRoute.renderHome} />
+  const HomeScreen = (lazy(() => import('../screens/HomeScreen')));
+  const WithSuspense = () => (
+    <Suspense fallback={<LoadingMessage/>}>
+      <HomeScreen/>
+    </Suspense>
   );
-
+  reducerRegistry.register({
+    homeReducer: reducer
+  });
+  return (
+    <Route path='/home'>
+      <WithSuspense/>
+    </Route>
+  );
 };

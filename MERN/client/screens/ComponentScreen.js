@@ -1,9 +1,11 @@
-import React, { Component }   from 'react';
+import React, { Component, lazy }   from 'react';
 import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators    from '../actions/UserActions';
 import ComponentsList         from '../components/ComponentsList';
 import styles                 from '../scss/ComponentsList.scss';
+import { Switch, Route } from 'react-router-dom';
+import ButtonComponent from '../components/Button';
 
 class ComponentScreen extends Component {
   constructor(props) {
@@ -14,15 +16,11 @@ class ComponentScreen extends Component {
   componentDidMount() {
     this.actions.initUsers();
   }
-  static contextTypes = {
-    router: React.PropTypes.object.isRequired
-  };
   addChildProps(element) {
     return React.cloneElement(element, { title: 'Components' });
   }
   render() {
     let {children} = this.props;
-
     return(
       <div className={`${styles.componentLists} components-list-page`}>
         <div className='component-nav-container'>
