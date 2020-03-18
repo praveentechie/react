@@ -21,6 +21,9 @@ export default class ComponentsList extends Component {
           <Link to='/components/input-field' className='section-item'>
             Input Field
           </Link>
+          <Link to='/components/scroll-to' className='section-item'>
+            Scroll To Content
+          </Link>
         </div>
       </div>
     );

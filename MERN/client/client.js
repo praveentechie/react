@@ -18,9 +18,9 @@ import { connectRouter } from 'connected-react-router';
 import history from "./utils/history";
 import HomeRoute from './routes/HomeRoute';
 import ComponentRoute from './routes/ComponentsRoute';
-// import 'jquery.growl/stylesheets/jquery.growl.css';
-// import './css/Utils.css';
+import LoginRoute from "./login/login.route";
 import './scss/_core.scss';
+
 const reducerRegistry = new ReducerRegistry({
   router: connectRouter(history)
 });
@@ -37,18 +37,23 @@ Promise.all([storeFactory(combineReducers(reducerRegistry.getReducers()))])
     throw error;
   });
 
-const render = (store)=>{
+const render = (store) => {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <HashRouter>
           <div>
-            <Route path='/' component={App}/>
+            <Switch>
+              <Route exact component={App}/>
+              {LoginRoute(reducerRegistry)}
+            </Switch>
             <Switch>
               {HomeRoute(reducerRegistry)}
               {ComponentRoute(reducerRegistry)}
-              <Route component={RouteNotFound}/>
             </Switch>
+            {/* <Route>
+              <RouteNotFound/>
+            </Route> */}
           </div>
         </HashRouter>
       </ConnectedRouter>
@@ -56,6 +61,3 @@ const render = (store)=>{
     document.getElementById('mount')
   );
 };
-if (module.hot) {
-  module.hot.accept();
-}
