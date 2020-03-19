@@ -1,6 +1,7 @@
 import { Route }  from 'react-router-dom';
 import UserReducer from '../reducers/UserReducer';
 import { lazy, Suspense } from 'react';
+import { UserProvider } from "../_core/context/user-context";
 
 const LoadingMessage = () => (
   "I'm loading..."
@@ -14,6 +15,8 @@ export default (reducerRegistry) => {
   const InputField = (lazy(() => import('../components/InputField')));
   const ScrollToContent = (lazy(() => import('../reusable/ScrollToContent')));
   const ScrollToContentHook = (lazy(() => import('../reusable/ScrollToContentHook')));
+  const ErrorBoundary = (lazy(() => import('../reusable/ErrorBoundary')));
+  const TriggerError = (lazy(() => import('../reusable/TriggerError')));
 
   const WithSuspense = () => (
     <Suspense fallback={<LoadingMessage/>}>
@@ -36,6 +39,11 @@ export default (reducerRegistry) => {
           </Route>
           <Route path="/components/scroll-to-hook">
             <ScrollToContentHook/>
+          </Route>
+          <Route path="/components/error-boundary">
+            <ErrorBoundary>
+              <TriggerError/>
+            </ErrorBoundary>
           </Route>
         </div>
       </ComponentScreen>

@@ -25,6 +25,9 @@ export default class ComponentsList extends Component {
       }, {
         path: '/components/scroll-to-hook',
         name: 'Scroll To Content - Hook'  
+      }, {
+        path: '/components/error-boundary',
+        name: 'Error boundary'
       }
     ];
     return (

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { longHeroList } from '../_core/utils/mock';
+import { useUser } from "../_core/context/user-context";
 import './ScrollToContent.scss';
 
 const scrollToView = (ref) => {
@@ -13,6 +14,7 @@ function ScrollToContentHook(props) {
   /**
    * ### react: hooks useState and useRef
    */
+  console.log('********', useUser());
   const [darkKnightRef] = useState(React.createRef());
   const wolverineRef = useRef(null);
 

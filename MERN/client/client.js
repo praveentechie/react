@@ -14,6 +14,7 @@ import storeFactory             from './utils/StoreFactory';
 import App                      from './components/App';
 import RouteNotFound            from './components/RouteNotFound';
 import { connectRouter } from 'connected-react-router';
+import { UserProvider, useUser } from "./_core/context/user-context";
 
 import history from "./utils/history";
 import HomeRoute from './routes/HomeRoute';
@@ -42,19 +43,21 @@ const render = (store) => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <HashRouter>
-          <div>
-            <Switch>
-              <Route exact component={App}/>
-              {LoginRoute(reducerRegistry)}
-            </Switch>
-            <Switch>
-              {HomeRoute(reducerRegistry)}
-              {ComponentRoute(reducerRegistry)}
-            </Switch>
-            {/* <Route>
-              <RouteNotFound/>
-            </Route> */}
-          </div>
+          <UserProvider>
+            <div>
+              <Switch>
+                <Route exact component={App}/>
+                {LoginRoute(reducerRegistry)}
+              </Switch>
+              <Switch>
+                {HomeRoute(reducerRegistry)}
+                {ComponentRoute(reducerRegistry)}
+              </Switch>
+              {/* <Route>
+                <RouteNotFound/>
+              </Route> */}
+            </div>
+          </UserProvider>
         </HashRouter>
       </ConnectedRouter>
     </Provider>,
