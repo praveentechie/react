@@ -14,7 +14,7 @@ export default class PageLoaders extends Component {
         </div>
         <div className='component-wrapper' style={{position: 'relative'}}>
           <h3 className='component-title'>Loader 2</h3>
-          <i className="fa fa-spinner fa-spin" aria-hidden="true"></i>
+          <i className="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
         </div>
       </div>
     );

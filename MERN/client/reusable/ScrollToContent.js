@@ -3,11 +3,11 @@ import { longHeroList } from '../_core/utils/mock';
 import './ScrollToContent.scss';
 
 export default class ScrollToContent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      darkKnightRef: null,
-      wolverineRef: null
+      darkKnightRef: React.createRef(),
+      wolverineRef: React.createRef()
     };
   }
 
@@ -19,12 +19,10 @@ export default class ScrollToContent extends Component {
   };
 
   render() {
-    this.state.darkKnightRef = React.createRef();
-    this.state.wolverineRef = React.createRef();
-
     const refList = ['darkKnight', 'wolverine'];
     return(
       <div className="scroll-to-content">
+        <h3 className="component-title">Scroll to view with Class Component</h3>
         <ul>
           {
             longHeroList.map(hero => {

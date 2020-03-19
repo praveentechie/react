@@ -13,6 +13,7 @@ export default (reducerRegistry) => {
   const Button = (lazy(() => import('../components/Button')));
   const InputField = (lazy(() => import('../components/InputField')));
   const ScrollToContent = (lazy(() => import('../reusable/ScrollToContent')));
+  const ScrollToContentHook = (lazy(() => import('../reusable/ScrollToContentHook')));
 
   const WithSuspense = () => (
     <Suspense fallback={<LoadingMessage/>}>
@@ -32,6 +33,9 @@ export default (reducerRegistry) => {
           </Route>
           <Route path="/components/scroll-to">
             <ScrollToContent/>
+          </Route>
+          <Route path="/components/scroll-to-hook">
+            <ScrollToContentHook/>
           </Route>
         </div>
       </ComponentScreen>

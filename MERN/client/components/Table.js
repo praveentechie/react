@@ -27,7 +27,7 @@ export default class Table extends Component {
     }];
     return (
       <div className='table'>
-        <h2>Table Component</h2>
+        <h3>Table Component</h3>
         <BootstrapTable data={products} striped={true} hover={true} search height={300}>
           <TableHeaderColumn dataField='id' isKey={true} dataAlign='center' dataSort={true}>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField='name' dataSort={true}>Product Name</TableHeaderColumn>

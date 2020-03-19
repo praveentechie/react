@@ -10,7 +10,7 @@ export default class ButtonComponent extends Component {
   render() {
     return (
       <div className='button-component'>
-        <h2>Button Component</h2>
+        <h3>Button Component</h3>
         <div className='button-display'>
           <div className='button-section'>
             <h4 className='button-title'>Previous arrow on hover</h4>

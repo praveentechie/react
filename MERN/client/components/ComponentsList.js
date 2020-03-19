@@ -1,29 +1,48 @@
 import React, { Component }   from 'react';
-import { Link }               from 'react-router-dom';
+import { Link, NavLink }               from 'react-router-dom';
 
 export default class ComponentsList extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const componentLinkList = [
+      {
+        path: '/components/loader',
+        name: 'Loader'  
+      }, {
+        path: '/components/table',
+        name: 'Table'  
+      }, {
+        path: '/components/button',
+        name: 'Button'  
+      }, {
+        path: '/components/input-field',
+        name: 'Input Field'  
+      }, {
+        path: '/components/scroll-to',
+        name: 'Scroll To Content'  
+      }, {
+        path: '/components/scroll-to-hook',
+        name: 'Scroll To Content - Hook'  
+      }
+    ];
     return (
       <div className='component-list'>
         <div className='component-section'>
-          <Link to='/components/loader' className='section-item'>
-            Loader
-          </Link>
-          <Link to='/components/table' className='section-item'>
-            Table
-          </Link>
-          <Link to='/components/button' className='section-item'>
-            Button
-          </Link>
-          <Link to='/components/input-field' className='section-item'>
-            Input Field
-          </Link>
-          <Link to='/components/scroll-to' className='section-item'>
-            Scroll To Content
-          </Link>
+          {
+            componentLinkList.map(component => {
+              return (
+                <NavLink key={component.path}
+                  to={component.path}
+                  className='section-item'
+                  activeClassName="selected-component"
+                >
+                  {component.name}
+                </NavLink>    
+              );
+            })
+          }
         </div>
       </div>
     );

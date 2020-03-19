@@ -4,6 +4,10 @@
     justify-content: center;
     width: 100%;
 
+    .active-page {
+      color: #f3f3f3;
+    }
+
     & > * {
       border-right: 1px solid #ccc;
       padding: 0 8px;

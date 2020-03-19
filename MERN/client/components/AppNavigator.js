@@ -1,5 +1,5 @@
 import React, { Component }   from 'react';
-import { Link }               from 'react-router-dom';
+import { NavLink }            from 'react-router-dom';
 import '../scss/AppNavigator.scss';
 
 export default class AppNavigator extends Component {
@@ -9,13 +9,40 @@ export default class AppNavigator extends Component {
     };
   }
   render() {
+    const appLinkList = [
+      {
+        path: '/home',
+        name: 'Home',
+        iconClass: 'fa-home'
+      }, {
+        path: '/components',
+        name: 'Components',
+        iconClass: 'fa fa-cubes'
+      }, {
+        path: '/contact',
+        name: 'Contact',
+        iconClass: 'fa-handshake-o'
+      }, {
+        path: '/about',
+        name: 'About',
+        iconClass: 'fa-id-badge'
+      }
+    ];
     return (
       <div className='app-navigation-container'>
         <h4 className='app-navigation'>
-          <Link to='/home'><i className='fa fa-home'/> Home</Link>
-          <Link to='/components'><i className='fa fa-cubes'/> Components</Link>
-          <Link to='/contact'><i className='fa fa-handshake-o'/> Contact</Link>
-          <Link to='/about'><i className='fa fa-id-badge'/> About</Link>
+          {
+            appLinkList.map(link => {
+              return (
+                <NavLink key={link.path}
+                  to={link.path}
+                  activeClassName="active-page"
+                >
+                  <i className={`fa ${link.iconClass}`}/> {link.name}
+                </NavLink>
+              );
+            })
+          }
         </h4>
       </div>
     );
