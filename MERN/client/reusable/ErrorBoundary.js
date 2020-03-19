@@ -1,3 +1,7 @@
+/**
+ * ### react error boundary
+ * componentDidCatch() life cycle & getDerivedStateFromError()
+ */
 import { Component } from "react";
 
 export default class ErrorBoundary extends Component {

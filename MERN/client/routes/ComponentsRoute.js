@@ -12,7 +12,7 @@ export default (reducerRegistry) => {
   const TableComponent = (lazy(() => import('../components/Table')));
   const LoaderComponent = (lazy(() => import('../components/PageLoaders')));
   const Button = (lazy(() => import('../components/Button')));
-  const InputField = (lazy(() => import('../components/InputField')));
+  const InputFieldComponents = (lazy(() => import('../components/InputFieldComponents')));
   const ScrollToContent = (lazy(() => import('../reusable/ScrollToContent')));
   const ScrollToContentHook = (lazy(() => import('../reusable/ScrollToContentHook')));
   const ErrorBoundary = (lazy(() => import('../reusable/ErrorBoundary')));
@@ -32,7 +32,7 @@ export default (reducerRegistry) => {
             <Button title="Component"/>
           </Route>
           <Route path="/components/input-field">
-            <InputField/>
+            <InputFieldComponents/>
           </Route>
           <Route path="/components/scroll-to">
             <ScrollToContent/>

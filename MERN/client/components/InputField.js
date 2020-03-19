@@ -1,45 +1,35 @@
 import React, { Component }   from 'react';
-import InputSlide             from './InputSlide';
 import '../scss/components/_InputField.scss';
 
 export default class InputField extends Component {
   constructor(props) {
     super(props);
-    this.updateVSplit = this.updateVSplit.bind(this);
-
-    this.state = {
-      vSplit: ''
-    };
   }
+  /** ### react defaultProps */
+  static defaultProps = {
+    inputType: 'text',
+    autoComplete: 'on',
+    onChangeCallback: () => {}  
+  };
 
-  updateVSplit(event) {
-    this.setState({vSplit: event.target.value});
+  updateVSplit = (event) => {
+    this.props.onChangeCallback(event.target.value);
   }
 
   render() {
-    const {vSplit} = this.state;
-
     return (
-      <div className='component-container'>
-        <div className='component-wrapper'>
-          <h3 className='component-title'>Field 1</h3>
-          <span className={`v-input input-v-split ${vSplit ? 'input-filled' : ''}`}>
-            <input className='input-field input-field-v-split'
-              type='text'
-              id='input-1'
-              value={vSplit}
-              onChange={this.updateVSplit}
-            />
-            <label className='input-label input-label-v-split' htmlFor='input-1'>
-              <span className='input-label-content input-label-content-v-split'>First Name</span>
-            </label>
-          </span>
-        </div>
-        <div className='component-wrapper'>
-          <h3 className='component-title'>Field Style 2</h3>
-          <InputSlide />
-        </div>
-      </div>
+      <span className={`v-input input-v-split ${this.props.value ? 'input-filled' : ''}`}>
+        <input className='input-field input-field-v-split'
+          type={this.props.inputType}
+          id={`input-${this.props.uniqueId}`}
+          value={this.props.value}
+          onChange={(event) => this.props.onChangeCallback(event.target.value)}
+          autoComplete={this.props.autoComplete}
+        />
+        <label className='input-label input-label-v-split' htmlFor='input-1'>
+          <span className='input-label-content input-label-content-v-split'>{this.props.label}</span>
+        </label>
+      </span>
     );
   }
-}
+};

@@ -24,6 +24,10 @@ body {
       text-decoration: none;
     }
   }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .app-container {
