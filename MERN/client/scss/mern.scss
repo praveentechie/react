@@ -27,13 +27,29 @@ body {
 }
 
 .app-container {
+  padding-top: 10px;
 
-  .page-title {
-    color: $page-title-color;
-    cursor: default;
-    margin-top: 0;
-    padding-top: 20px;
-    text-align: center;
+  .header-section {
+    display: flex;
+    align-items: center;
+
+    .logo-content {
+      flex-grow: 1;
+    }
+    .page-title {
+      flex-grow: 2;
+      color: $page-title-color;
+      cursor: default;
+      margin-top: 0;
+      text-align: center;
+    }
+    .global-actions {
+      flex-grow: 1;
+      text-align: right;
+      .btn {
+        color: wheat;
+      }
+    }
   }
 }
 

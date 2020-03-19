@@ -7,10 +7,10 @@ import thunk        from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import history from '../utils/history';
 
-export default (reducer)=>{
-  return new Promise((resolve, reject)=>{
+export default (reducer) => {
+  return new Promise((resolve, reject) => {
 
-    if(process.env.NODE_ENV === 'development'&&false){
+    if(process.env.NODE_ENV === 'development' && false) {
       require.ensure([], (require) => {
 
         let middleWare = [thunk];
@@ -23,7 +23,7 @@ export default (reducer)=>{
         resolve(store);
 
       });
-    }else{
+    } else {
       let middleWare = [thunk, routerMiddleware(history)];
       // let createStoreWithMiddleware = compose(
       //     applyMiddleware(...middleWare)
@@ -34,7 +34,6 @@ export default (reducer)=>{
         connectRouter(history)(reducer),
         applyMiddleware(...middleWare)
       );
-      console.log('store', store);
       resolve(store);
     }
   });

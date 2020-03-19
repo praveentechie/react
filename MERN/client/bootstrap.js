@@ -3,6 +3,7 @@ import ReducerRegistry          from './utils/ReducerRegistry';
 import { connectRouter }        from 'connected-react-router';
 import storeFactory             from './utils/StoreFactory';
 import history                  from "./utils/history";
+import './scss/_core.scss';
 
 function bootstrapApp() {
   const reducerRegistry = new ReducerRegistry({
