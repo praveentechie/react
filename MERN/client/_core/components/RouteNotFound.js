@@ -1,6 +1,5 @@
 import React, { Component }   from 'react';
 import { Link }               from 'react-router-dom';
-import '../scss/mern.scss';
 
 export default class RouteNotFound extends Component {
   constructor(props) {

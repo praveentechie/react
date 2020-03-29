@@ -1,6 +1,6 @@
 import React, { Component }   from 'react';
 import { NavLink }            from 'react-router-dom';
-import '../scss/AppNavigator.scss';
+import './AppNavigator.scss';
 
 export default class AppNavigator extends Component {
   constructor(props) {

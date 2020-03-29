@@ -5,7 +5,7 @@ import {
 }                   from 'redux';
 import thunk        from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import history from '../utils/history';
+import history from './mern-history';
 
 export default (reducer) => {
   return new Promise((resolve, reject) => {
@@ -25,11 +25,6 @@ export default (reducer) => {
       });
     } else {
       let middleWare = [thunk, routerMiddleware(history)];
-      // let createStoreWithMiddleware = compose(
-      //     applyMiddleware(...middleWare)
-      //   )(createStore);
-
-      // let store = createStoreWithMiddleware(reducer);
       let store = createStore(
         connectRouter(history)(reducer),
         applyMiddleware(...middleWare)

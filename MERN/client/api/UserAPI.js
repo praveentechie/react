@@ -1,4 +1,4 @@
-import restClient     from '../utils/rest';
+import restClient     from '../_core/utils/rest';
 
 export default {
   getAllUsers() {
@@ -6,7 +6,7 @@ export default {
       method: 'GET',
       path: '/v1/users'
     });
-  }
+  },
 
   saveUser(userEntity) {
     return restClient({

@@ -1,11 +1,15 @@
 $page-title-color: #efefef;
 
+$fa-font-path:        "../../resources/styles/font-awesome/fonts";
+@import '../../resources/styles/font-awesome/scss/font-awesome.scss';
+@import 'bootstrap/scss/bootstrap.scss';
+
 html {
   box-sizing: border-box;
   min-height: 95%;
 }
 *, *:before, *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body {
@@ -85,4 +89,9 @@ body {
       }
     }
 	}
+}
+
+.action-container {
+  background-color: #707070;
+  padding: 9px;
 }

@@ -3,12 +3,15 @@ import {
   Switch,
   Redirect
 }                           from 'react-router-dom';
+
 import { useUser }          from "./_core/context/user-context";
-import RouteNotFound        from './components/RouteNotFound';
+
 import HomeRoute            from './routes/HomeRoute';
 import ComponentRoute       from './routes/ComponentsRoute';
 import LoginRoute           from "./login/login.route";
-import App                  from './components/App';
+
+import App                  from './_core/components/App';
+import RouteNotFound        from './_core/components/RouteNotFound';
 
 export default ({reducerRegistry}) => {
   const userContext = useUser();
