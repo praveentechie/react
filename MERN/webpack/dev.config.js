@@ -59,6 +59,10 @@ var webpackOptions = {
     ]
   },
   resolve: {
+    /**
+     * ### webpack: directly import the sub-folders like a module
+     */
+    modules: ['node_modules', 'client'],
     extensions: ['.js', '.json','.jsx','.scss','.css']
   },
   devServer: {

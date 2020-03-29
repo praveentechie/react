@@ -1,4 +1,4 @@
-import Constants  from '../constants/HomeConstants';
+import { homeActions }  from './home.constants';
 
 let initialState = {
   user: 'AP'
@@ -6,7 +6,7 @@ let initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case Constants.EDIT_USER_NAME:
+    case homeActions.EDIT_USER_NAME:
       return {user: action.value};
     default:
       return state;

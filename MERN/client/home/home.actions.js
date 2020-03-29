@@ -1,9 +1,9 @@
-import Constants  from '../constants/HomeConstants';
+import { homeActions }  from './home.constants';
 
 export const editUserName = (value) => {
   return(dispatch)=> {
     dispatch({
-      type: Constants.EDIT_USER_NAME,
+      type: homeActions.EDIT_USER_NAME,
       value
     });
   };

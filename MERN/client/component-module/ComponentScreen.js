@@ -1,11 +1,9 @@
-import React, { Component, lazy }   from 'react';
+import React, { Component }   from 'react';
 import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionCreators    from '../actions/UserActions';
-import ComponentsList         from '../components/ComponentsList';
-import styles                 from '../scss/ComponentsList.scss';
-import { Switch, Route } from 'react-router-dom';
-import ButtonComponent from '../components/Button';
+import * as actionCreators    from './component.actions';
+import ComponentsList         from './components/ComponentsList';
+import styles                 from './component-module.scss';
 
 class ComponentScreen extends Component {
   constructor(props) {

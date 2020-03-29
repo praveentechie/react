@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { longHeroList } from '../_core/utils/mock';
-import { useUser } from "../_core/context/user-context";
-import './ScrollToContent.scss';
+import { longHeroList } from '_core/utils/mock';
+import { useUser } from "_core/context/user-context";
+import './scroll-to-content.scss';
 
 const scrollToView = (ref) => {
   ref.current.scrollIntoView({

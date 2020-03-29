@@ -1,5 +1,5 @@
 import React, { Component }   from 'react';
-import Loader                 from './Loader';
+import Loader                 from '_shared/loader/Loader';
 
 export default class PageLoaders extends Component {
   constructor(props) {

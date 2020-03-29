@@ -3,8 +3,8 @@ import {
   BootstrapTable,
   TableHeaderColumn
 }                             from 'react-bootstrap-table';
-import '../_core/styles/react-bootstrap-table.min.css';
-import '../scss/table.scss';
+import '_core/styles/react-bootstrap-table.min.css';
+import './table.scss';
 
 export default class Table extends Component {
   static displayName = 'Table';

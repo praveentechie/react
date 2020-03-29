@@ -1,4 +1,4 @@
-import restClient     from '../_core/utils/rest';
+import restClient     from '_core/utils/rest';
 
 export default {
   getAllUsers() {

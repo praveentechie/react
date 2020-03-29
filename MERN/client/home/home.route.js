@@ -6,11 +6,11 @@ const LoadingMessage = () => (
 );
 export default (reducerRegistry) => {
   const HomeScreen = (lazy(() => {
-    return import('../reducers/HomeReducer').then(({default: reducer}) => {
+    return import('./home.reducer').then(({default: reducer}) => {
       reducerRegistry.register({
         homeReducer: reducer
       });
-      return import('../screens/HomeScreen');
+      return import('./HomeScreen');
     });
   }));
 

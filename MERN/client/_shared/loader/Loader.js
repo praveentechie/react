@@ -1,5 +1,5 @@
 import React, {Component}     from 'react';
-import '../scss/components/_Loader.scss';
+import './loader.scss';
 
 export default class Loader extends Component {
   constructor(props) {

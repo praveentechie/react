@@ -9,6 +9,7 @@ function bootstrapApp() {
   const reducerRegistry = new ReducerRegistry({
     router: connectRouter(history)
   });
+
   return Promise.all([storeFactory(combineReducers(reducerRegistry.getReducers()))])
   .then(response => {
     const store = response[0];

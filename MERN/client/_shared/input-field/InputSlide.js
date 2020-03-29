@@ -1,5 +1,5 @@
 import React, { Component }   from 'react';
-import '../scss/components/_InputSlide.scss';
+import './input-slide.scss';
 
 export default class InputSlide extends Component {
   constructor(props) {

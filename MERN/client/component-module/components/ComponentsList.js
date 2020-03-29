@@ -1,5 +1,6 @@
-import React, { Component }   from 'react';
-import { Link, NavLink }               from 'react-router-dom';
+import React, { Component }      from 'react';
+import { NavLink }               from 'react-router-dom';
+import { routes }                from "../component.constants";
 
 export default class ComponentsList extends Component {
   constructor(props) {
@@ -8,25 +9,25 @@ export default class ComponentsList extends Component {
   render() {
     const componentLinkList = [
       {
-        path: '/components/loader',
+        path: routes.LOADER,
         name: 'Loader'  
       }, {
-        path: '/components/table',
+        path: routes.TABLE,
         name: 'Table'  
       }, {
-        path: '/components/button',
+        path: routes.BUTTON,
         name: 'Button'  
       }, {
-        path: '/components/input-field',
+        path: routes.INPUT_FIELD,
         name: 'Input Field'  
       }, {
-        path: '/components/scroll-to',
+        path: routes.SCROLL_TO,
         name: 'Scroll To Content'  
       }, {
-        path: '/components/scroll-to-hook',
+        path: routes.SCROLL_TO_HOOK,
         name: 'Scroll To Content - Hook'  
       }, {
-        path: '/components/error-boundary',
+        path: routes.ERROR_BOUNDARY,
         name: 'Error boundary'
       }
     ];

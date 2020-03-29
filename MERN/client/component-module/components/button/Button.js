@@ -1,6 +1,6 @@
 import React, { Component }   from 'react';
 import { Button }             from 'react-bootstrap';
-import '../scss/components/_Button.scss';
+import './button.scss';
 
 export default class ButtonComponent extends Component {
   constructor(props) {

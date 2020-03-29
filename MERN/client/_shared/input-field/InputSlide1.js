@@ -3,8 +3,7 @@
  * A sample try to replicate InputSlide.js effect
  */
 import React, { Component } from 'react';
-
-import '../scss/components/_InputSlide1.scss';
+import './input-slide1.scss';
 
 export default class InputSlide1 extends Component {
   constructor() {

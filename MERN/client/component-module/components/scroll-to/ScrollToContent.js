@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { longHeroList } from '../_core/utils/mock';
-import './ScrollToContent.scss';
+import { longHeroList } from '_core/utils/mock';
+import './scroll-to-content.scss';
 
 export default class ScrollToContent extends Component {
   constructor(props) {

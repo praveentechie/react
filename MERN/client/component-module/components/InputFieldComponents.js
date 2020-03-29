@@ -1,7 +1,6 @@
-import { Component } from 'react';
-import InputSlide             from './InputSlide';
-import InputField from './InputField';
-import '../scss/components/_InputField.scss';
+import { Component }         from 'react';
+import InputSlide            from '_shared/input-field/InputSlide';
+import InputField            from '_shared/input-field/InputField';
 
 export default class InputFieldComponents extends Component {
   constructor(props) {

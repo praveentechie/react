@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { useUser } from "../_core/context/user-context";
-import InputField from "../components/InputField";
+import { useUser } from "_core/context/user-context";
+import InputField from "_shared/input-field/InputField";
 import './login-page.scss';
 
 export default (props) => {

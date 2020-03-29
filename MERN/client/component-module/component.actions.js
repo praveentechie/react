@@ -1,13 +1,13 @@
-import UserAPI    from '../api/AppAPI';
-import Constants  from '../constants/UserConstants';
+import UserAPI               from '../api/AppAPI';
+import { componentActions }  from './component.constants';
 
 export const initUsers = () => {
   return(dispatch)=> {
-    dispatch({type: Constants.FETCHING_USERS_LIST});
+    dispatch({type: componentActions.FETCHING_USERS_LIST});
     UserAPI.getAllUsers().then(res => {
       console.log('res', res);
       dispatch({
-        type: Constants.SET_USER_LIST,
+        type: componentActions.SET_USER_LIST,
         userList: res.entity
       });
     }).catch(err => {
