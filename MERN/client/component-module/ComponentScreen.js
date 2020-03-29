@@ -3,7 +3,7 @@ import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators    from './component.actions';
 import ComponentsList         from './components/ComponentsList';
-import styles                 from './component-module.scss';
+import './component-module.scss';
 
 class ComponentScreen extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class ComponentScreen extends Component {
   render() {
     let {children} = this.props;
     return(
-      <div className={`${styles.componentLists} components-list-page`}>
+      <div className={`components-list-page`}>
         <div className='component-nav-container'>
         <ComponentsList />
         {
