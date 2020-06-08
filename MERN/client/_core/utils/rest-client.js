@@ -1,5 +1,8 @@
+const NODE_SERVER_PORT = 4040;
+
 async function restClient ({requestUrl, method = 'GET', body, ...rest}) {
-  const response = await fetch(requestUrl, {
+  let completeUrl = buildCompleteUrl(requestUrl);
+  const response = await fetch(completeUrl, {
     method,
     headers: {
       'Content-Type': 'application/json'
@@ -14,6 +17,10 @@ async function restClient ({requestUrl, method = 'GET', body, ...rest}) {
     responseResult = await Promise.reject(response);
   }
   return responseResult;
+}
+
+function buildCompleteUrl(requestUrl) {
+  return `http://localhost:${NODE_SERVER_PORT}${requestUrl}`;
 }
 
 export default restClient;
