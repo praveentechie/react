@@ -10,14 +10,14 @@ export default class InputSlide1 extends Component {
     super();
     this.state = {
       query: ''
-    };  
+    };
   }
 
-  handleQueryChange = query => {
+  handleQueryChange = (query) => {
     this.setState({ query });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     const { onSubmit } = this.props;
     const { query } = this.state;
     onSubmit(e, query);
@@ -28,7 +28,7 @@ export default class InputSlide1 extends Component {
   };
 
   updateSlide = (event) => {
-    this.setState({inputSlide: event.target.value})
+    this.setState({ inputSlide: event.target.value });
   }
 
   // render() {
@@ -57,20 +57,22 @@ export default class InputSlide1 extends Component {
         onSubmit={this.handleSubmit}
       >
         <span className={`slide-input input-slide ${query ? 'input-filled' : ''}`}>
-          <input type="text"
+          <input
+            type="text"
             className="input-field input-field-slide"
             value={query}
             onChange={this.handleQueryChange}
           />
-          <label htmlFor='input-6'
-            className='input-label input-label-slide input-label-slide-color-2'
+          <label
+            htmlFor="input-6"
+            className="input-label input-label-slide input-label-slide-color-2"
           >
-            <span className='input-label-content input-label-content-slide'>
+            <span className="input-label-content input-label-content-slide">
               Town
             </span>
           </label>
-          {query && <i className='glyphicon glyphicon-close' onClick={this.clearQuery} />}
-          <button primary icon="glyphicon-search" onClick={this.handleSubmit}/>
+          {query && <i className="glyphicon glyphicon-close" onClick={this.clearQuery} />}
+          <button primary icon="glyphicon-search" onClick={this.handleSubmit} />
         </span>
       </form>
     );

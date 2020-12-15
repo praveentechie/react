@@ -1,6 +1,6 @@
 {
   "name": "mern",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Mongo DB, Express JS, React, Node JS",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "start": "node dist/server.js",
     "prepublish": "npm run prod-client",
     "prod-client": "node_modules/webpack/bin/webpack.js --config ./webpack/dev.config.js",
-    "prod-mode": "npm run prod-client && npm run prod-server"
+    "prod-mode": "npm run prod-client && npm run prod-server",
+    "lint": "eslint client/"
   },
   "repository": {
     "type": "git",
@@ -63,12 +64,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
+    "@babel/eslint-parser": "^7.12.1",
     "@babel/node": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "8.0.6",
+    "eslint": "^7.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "mocha": "^7.1.0",
     "node-sass": "^4.13.1",

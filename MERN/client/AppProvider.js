@@ -1,9 +1,13 @@
-import { UserProvider } from "./_core/context/user-context";
+import React from 'react';
+import { UserProvider } from './_core/context/user-context';
 
-export default ({children}) => {
+const AppProvider = ({ children }) => {
   return (
     <UserProvider>
       {children}
     </UserProvider>
   );
 };
+
+AppProvider.displayName = 'AppProvider';
+export default AppProvider;

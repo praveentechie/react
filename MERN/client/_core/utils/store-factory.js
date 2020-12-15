@@ -2,34 +2,35 @@ import {
   createStore,
   applyMiddleware,
   compose
-}                   from 'redux';
-import thunk        from 'redux-thunk';
+} from 'redux';
+import thunk from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import history from './mern-history';
 
 export default (reducer) => {
   return new Promise((resolve, reject) => {
+    try {
+      if (process.env.NODE_ENV === 'development' && process.env.dummy) {
+        require.ensure([], () => {
+          const middleWare = [thunk];
 
-    if(process.env.NODE_ENV === 'development' && false) {
-      require.ensure([], (require) => {
-
-        let middleWare = [thunk];
-
-        let createStoreWithMiddleware = compose(
+          const createStoreWithMiddleware = compose(
             applyMiddleware(...middleWare)
           )(createStore);
 
-        let store = createStoreWithMiddleware(reducer);
+          const store = createStoreWithMiddleware(reducer);
+          resolve(store);
+        });
+      } else {
+        const middleWare = [thunk, routerMiddleware(history)];
+        const store = createStore(
+          connectRouter(history)(reducer),
+          applyMiddleware(...middleWare)
+        );
         resolve(store);
-
-      });
-    } else {
-      let middleWare = [thunk, routerMiddleware(history)];
-      let store = createStore(
-        connectRouter(history)(reducer),
-        applyMiddleware(...middleWare)
-      );
-      resolve(store);
+      }
+    } catch (exception) {
+      reject(exception);
     }
   });
 };

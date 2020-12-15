@@ -1,27 +1,27 @@
-import React                from 'react';
-import AppNavigator         from './AppNavigator';
+import React from 'react';
 import {
   DropdownButton,
   Dropdown
-}                           from 'react-bootstrap';
-import { useUser }          from "../context/user-context";
+} from 'react-bootstrap';
+import AppNavigator from './AppNavigator';
+import { useUser } from '../context/user-context';
 
-export default (props) => {
+const App = (props) => {
   const { user, setUser } = useUser();
   return (
-    <div className='app-container'>
+    <div className="app-container">
       <section className="header-section">
         <div className="logo-content">
-          <i className='fa fa-angellist fa-3x'/>
+          <i className="fa fa-angellist fa-3x" />
         </div>
-        <h1 className='page-title'>MERN Stack</h1>
+        <h1 className="page-title">MERN Stack</h1>
         <div className="global-actions">
           <DropdownButton
             id="global-action-menu"
             variant="none"
             title={user.name}
           >
-            <Dropdown.Item eventKey="1" onClick={() => setUser(null)}>Logout</Dropdown.Item>
+            <Dropdown.Item eventKey="1" onClick={() => { return setUser(null); }}>Logout</Dropdown.Item>
           </DropdownButton>
         </div>
       </section>
@@ -30,3 +30,6 @@ export default (props) => {
     </div>
   );
 };
+
+App.displayName = 'App';
+export default App;

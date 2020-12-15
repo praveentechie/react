@@ -1,10 +1,14 @@
-import { Route } from "react-router-dom";
-import LoginPage from "./LoginPage";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import LoginPage from './LoginPage';
 
-export default (reducerRegistry) => {
+const LoginRoute = () => {
   return (
     <Route path="/login">
-      <LoginPage/>
+      <LoginPage />
     </Route>
   );
 };
+
+LoginRoute.displayName = 'LoginRoute';
+export default LoginRoute;

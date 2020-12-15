@@ -1,4 +1,4 @@
-import React, { Component }   from 'react';
+import React, { Component } from 'react';
 import './input-slide.scss';
 
 export default class InputSlide extends Component {
@@ -9,22 +9,26 @@ export default class InputSlide extends Component {
     };
     this.updateSlide = this.updateSlide.bind(this);
   }
+
   updateSlide(event) {
-    this.setState({inputSlide: event.target.value})
+    this.setState({ inputSlide: event.target.value });
   }
+
   render() {
-    let {inputSlide} = this.state;
+    const { inputSlide } = this.state;
     return (
       <span className={`slide-input input-slide ${inputSlide ? 'input-filled' : ''}`}>
-        <input type='text'
-          id='input-6'
-          className='input-field input-field-slide'
+        <input
+          type="text"
+          id="input-6"
+          className="input-field input-field-slide"
           onChange={this.updateSlide}
         />
-        <label htmlFor='input-6'
-          className='input-label input-label-slide input-label-slide-color-2'
+        <label
+          htmlFor="input-6"
+          className="input-label input-label-slide input-label-slide-color-2"
         >
-          <span className='input-label-content input-label-content-slide'>
+          <span className="input-label-content input-label-content-slide">
             Town
           </span>
         </label>

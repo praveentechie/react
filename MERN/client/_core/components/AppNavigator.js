@@ -1,5 +1,5 @@
-import React, { Component }   from 'react';
-import { NavLink }            from 'react-router-dom';
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import './AppNavigator.scss';
 
 export default class AppNavigator extends Component {
@@ -8,6 +8,7 @@ export default class AppNavigator extends Component {
     this.linkSeparator = {
     };
   }
+
   render() {
     const appLinkList = [
       {
@@ -29,16 +30,19 @@ export default class AppNavigator extends Component {
       }
     ];
     return (
-      <div className='app-navigation-container'>
-        <h4 className='app-navigation'>
+      <div className="app-navigation-container">
+        <h4 className="app-navigation">
           {
-            appLinkList.map(link => {
+            appLinkList.map((link) => {
               return (
-                <NavLink key={link.path}
+                <NavLink
+                  key={link.path}
                   to={link.path}
                   activeClassName="active-page"
                 >
-                  <i className={`fa ${link.iconClass}`}/> {link.name}
+                  <i className={`fa ${link.iconClass}`} />
+                  {' '}
+                  {link.name}
                 </NavLink>
               );
             })

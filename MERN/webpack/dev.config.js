@@ -10,7 +10,7 @@ var webpackOptions = {
   cache : true,
   watch: false,
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:3040',
     'webpack/hot/only-dev-server',
     './client/client.js'
   ],
@@ -90,7 +90,7 @@ var webpackOptions = {
   ],
   devServer: {
     host: 'localhost',
-    port: 3000,
+    port: 3040,
     contentBase: path.join(__dirname, '..', 'dist'),
     historyApiFallback: true,
     // respond to 404s with index.html

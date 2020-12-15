@@ -12,7 +12,7 @@ var webpackOptions = {
     path: __dirname + '/'+jsDestPath,
     filename: 'client.js',
     chunkFilename: '[id].[chunkhash].js',
-    publicPath :  'http://localhost:3000/'
+    publicPath :  'http://localhost:3040/'
   },
   module: {
     rules: [
@@ -33,6 +33,7 @@ var webpackOptions = {
     ]
   },
   resolve: {
+    modules: ['node_modules', 'client'],
     extensions: ['', '.js', '.json','.jsx','.css']
   },
   devServer: {

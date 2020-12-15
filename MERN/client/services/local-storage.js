@@ -5,10 +5,10 @@ const LocalStorage = {
     }
     return window.localStorage;
   },
-  getValue (key) {
+  getValue(key) {
     return this.getLocalStorage().getItem(key);
   },
-  setValue (key, value) {
+  setValue(key, value) {
     this.getLocalStorage().setItem(key, value);
   }
 };

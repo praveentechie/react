@@ -11,5 +11,5 @@ export const routes = {
   LOADER: '/components/loader',
   SCROLL_TO_HOOK: '/components/scroll-to-hook',
   SCROLL_TO: '/components/scroll-to',
-  TABLE: '/components/table',
+  TABLE: '/components/table'
 };

@@ -1,7 +1,7 @@
-import React, { Component }   from 'react';
-import { connect }            from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionCreators    from './home.actions';
+import * as actionCreators from './home.actions';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -15,16 +15,15 @@ class HomeScreen extends Component {
   }
 
   render() {
-    let { user } = this.props.homeReducer;
-    return(
-      <div className='page-container'>
+    return (
+      <div className="page-container">
         List of components and Arch is available.
       </div>
     );
   }
 }
 
-export default connect(state => {
+export default connect((state) => {
   return {
     homeReducer: state.homeReducer
   };

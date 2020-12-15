@@ -1,42 +1,43 @@
-import React, { Component }   from 'react';
-import { Button }             from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import './button.scss';
 
 export default class ButtonComponent extends Component {
   constructor(props) {
     super(props);
-    document.title =  `${props.title} - Button`;
+    document.title = `${props.title} - Button`;
   }
+
   render() {
     return (
-      <div className='button-component'>
+      <div className="button-component">
         <h3>Button Component</h3>
-        <div className='button-display'>
-          <div className='button-section'>
-            <h4 className='button-title'>Previous arrow on hover</h4>
-            <span className='section-helper'>Add span with class '.before'</span>
-            <Button className='btn btn-primary hoverable'>
-              <span className='before'>Previous</span>
+        <div className="button-display">
+          <div className="button-section">
+            <h4 className="button-title">Previous arrow on hover</h4>
+            <span className="section-helper">Add span with class {'.before'}</span>
+            <Button className="btn btn-primary hoverable">
+              <span className="before">Previous</span>
             </Button>
           </div>
-          <div className='button-section'>
-            <h4 className='button-title'>Next arrow on hover</h4>
-            <span className='section-helper'>Add span with class '.before'</span>
-            <Button className='btn btn-primary hoverable'>
-              <span className='after'>Next</span>
+          <div className="button-section">
+            <h4 className="button-title">Next arrow on hover</h4>
+            <span className="section-helper">Add span with class {'.before'}</span>
+            <Button className="btn btn-primary hoverable">
+              <span className="after">Next</span>
             </Button>
           </div>
-          <div className='button-section'>
-            <h4 className='button-title'>Clickable</h4>
-            <span className='section-helper'>Bounce effect on Click</span>
-            <Button className='btn btn-primary clickable'>
+          <div className="button-section">
+            <h4 className="button-title">Clickable</h4>
+            <span className="section-helper">Bounce effect on Click</span>
+            <Button className="btn btn-primary clickable">
               Click Me :)
             </Button>
           </div>
-          <div className='button-section'>
-            <h4 className='button-title'>Ripple</h4>
-            <span className='section-helper'>Ripple effect on Click</span>
-            <Button className='btn btn-primary ripple'>
+          <div className="button-section">
+            <h4 className="button-title">Ripple</h4>
+            <span className="section-helper">Ripple effect on Click</span>
+            <Button className="btn btn-primary ripple">
               Click Me :)
             </Button>
           </div>

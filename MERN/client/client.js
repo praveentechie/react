@@ -1,14 +1,15 @@
-import React                    from 'react';
-window.React = React;
-import ReactDOM                 from 'react-dom';
-import { bootstrap }            from "./bootstrap";
-import RootPage                 from "./RootPage";
-import PageProvider             from './PageProvider';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { bootstrap } from './bootstrap';
+import RootPage from './RootPage';
+import PageProvider from './PageProvider';
 
-const render = ({store, reducerRegistry}) => {
+window.React = React;
+
+const render = ({ store, reducerRegistry }) => {
   ReactDOM.render(
     <RootPage store={store}>
-      <PageProvider reducerRegistry={reducerRegistry}/>
+      <PageProvider reducerRegistry={reducerRegistry} />
     </RootPage>,
     document.getElementById('mount')
   );
