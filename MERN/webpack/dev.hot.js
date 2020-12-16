@@ -2,8 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var jsDestPath = '../dist';
-console.log(path.join(__dirname, '..', 'dist'));
+var jsDestPath = 'dist';
 var webpackOptions = {
   mode: 'development',
   devtool: 'eval-source-map',
@@ -16,7 +15,7 @@ var webpackOptions = {
   output: {
     filename: 'client.js',
     chunkFilename: '[id].[chunkhash].js',
-    path: path.join(__dirname, '..', 'dist')
+    path: path.join(__dirname, '..', jsDestPath)
   },
   module: {
     rules: [
@@ -32,12 +31,36 @@ var webpackOptions = {
       },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-      { test: /\.png/, use: ['url-loader'] },
-      { test: /\.jpg/, use: ['url-loader'] },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
+      }, {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
-    extensions: ['.js', '.json','.jsx','.css']
+    /**
+     * ### webpack: directly import the sub-folders like a module
+     */
+    modules: ['node_modules', 'client'],
+    extensions: ['.js', '.json','.jsx','.scss','.css']
   },
   node: {
     fs: 'empty',

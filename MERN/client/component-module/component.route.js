@@ -1,4 +1,5 @@
-import React, { Route } from 'react-router-dom';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { routes } from './component.constants';
 

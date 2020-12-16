@@ -4,7 +4,13 @@ import { bootstrap } from './bootstrap';
 import RootPage from './RootPage';
 import PageProvider from './PageProvider';
 
-window.React = React;
+if (process.env.NODE_ENV === 'development') {
+  window.React = React;
+}
+
+if (module.hot) {
+  module.hot.accept();
+}
 
 const render = ({ store, reducerRegistry }) => {
   ReactDOM.render(

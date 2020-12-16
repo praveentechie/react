@@ -5,27 +5,21 @@ import cors           from 'cors';
 import express        from 'express';
 import helmet         from 'helmet';
 import path           from 'path';
-import mongoose       from 'mongoose';
-// Import all routes
-import userRoute      from './routes/userRoute';
-import viewRoute      from './routes/viewRoute';
-import config         from '../appConfig';
 
-let app = express();
+import config         from './appConfig';
+
+const app = express();
 console.log('config', config);
 let {
   serverInstance,
-  serverPort = 3008,
-  dbInstance,
-  dbPort,
+  serverPort,
   env
 } = config;
 
 app.use(helmet());
 app.use(cors());
 app.options('*', cors());
-// app.use(express.static(path.join(__dirname, './home.html')));
-app.use('/dist', express.static(path.join(__dirname, '/dist')));
+app.use(express.static(path.join(__dirname)));
 
 /* Enable hot reload for dev mode */
 if (env === 'development') {
@@ -50,15 +44,14 @@ if (env === 'development') {
     path: '/__webpack_hmr',
     heartbeat: 10 * 1000,
   }));
-
 }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser('s0meRand7Secret'));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(clientSessions({
   cookieName: 'session_ap',
-  secret: 's0meRand7Secret',
+  secret: process.env.COOKIE_SECRET,
   // duration: 60 * 1000, check the use
   cookie:{
     maxAge: 6000,
@@ -67,18 +60,8 @@ app.use(clientSessions({
   }
 }));
 
-app.use('/', viewRoute);
-app.use('/v*/users', userRoute);
 app.get('*', (req, res) => {
   res.sendFile('index.html', { root: 'dist' });
-});
-
-/* Replace depricated mongo promise and use from Node */
-mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${dbInstance}:${dbPort}/mern`).then((db)=> {
-  console.log('Connected to db');
-}).catch(err => {
-  console.log('Failed to connect to db', err);
 });
 
 /* Start server */
