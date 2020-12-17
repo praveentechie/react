@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 var jsDestPath = 'dist';
 const RESOLVED_DIST_PATH = path.join(__dirname, '../', jsDestPath);
@@ -14,7 +15,7 @@ var webpackOptions = {
   output: {
     path: RESOLVED_DIST_PATH,
     filename: 'client.js',
-    chunkFilename: './[id].[chunkhash].js'
+    chunkFilename: './scripts/[id].[chunkhash].js'
   },
   module: {
     rules: [
@@ -67,6 +68,11 @@ var webpackOptions = {
     tls: 'empty'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'React app',
       filename: 'index.html', // default value
@@ -74,16 +80,7 @@ var webpackOptions = {
       inject: true,
       excludeChunks: [ 'server' ]
     }),
-    // new webpack.optimize.UglifyJsPlugin([{
-    //   compress: {
-    //     warning: false
-    //   }
-    // }]),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    })
+    new CompressionPlugin()
   ],
 };
 

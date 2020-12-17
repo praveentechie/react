@@ -14,7 +14,7 @@ var webpackOptions = {
   ],
   output: {
     filename: 'client.js',
-    chunkFilename: '[id].[chunkhash].js',
+    chunkFilename: './scripts/[id].[chunkhash].js',
     path: path.join(__dirname, '..', jsDestPath)
   },
   module: {

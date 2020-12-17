@@ -17,7 +17,7 @@ var webpackOptions = {
   output: {
     path: path.join(__dirname, '../', jsDestPath),
     filename: 'client.js',
-    chunkFilename: '[id].[chunkhash].js',
+    chunkFilename: './scripts/[id].[chunkhash].js',
     publicPath: path.join(__dirname, '../', jsDestPath)
   },
   module: {
@@ -65,12 +65,6 @@ var webpackOptions = {
     modules: ['node_modules', 'client'],
     extensions: ['.js', '.json','.jsx','.scss','.css']
   },
-  devServer: {
-    contentBase: __dirname + '/client/',
-		noInfo: true, //  --no-info option
-		hot: true,
-		inline: true
-	},
   node: {
     fs: 'empty',
     net: 'empty',
@@ -91,6 +85,7 @@ var webpackOptions = {
   devServer: {
     host: 'localhost',
     port: 3040,
+    writeToDisk: true,
     contentBase: path.join(__dirname, '..', 'dist'),
     historyApiFallback: true,
     // respond to 404s with index.html

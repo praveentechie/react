@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
+
 import storeFactory from './_core/utils/store-factory';
 import ReducerRegistry from './_core/utils/reducer-registry';
 import history from './_core/utils/mern-history';
+
 import './_core/styles/_core.scss';
 
 function bootstrapApp() {
@@ -25,4 +27,4 @@ function bootstrapApp() {
     });
 }
 
-export const bootstrap = bootstrapApp;
+export default bootstrapApp;
